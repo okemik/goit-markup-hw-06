@@ -519,11 +519,11 @@ footer {
 }
 
 .footer-social-link:hover {
-    background-color: #31d0aa;
+    --color3: #31d0aa;
 }
 
 .footer-social-link:focus {
-    background-color: #31d0aa;
+    --color3: #31d0aa;
 }
 
 .footer-social-link {
@@ -860,25 +860,26 @@ footer {
     background-color: #404bbf;
 }
 
-/* Varsayılan mobil görünüm */
-.container {
-    width: 100%;
-    padding: 0 15px;
+
+@media screen and (max-width: 320px) {
+    .container {
+        width: 320px;
+    }
+
+    .features-list,
+    .team-list,
+    .portfolio-list {
+        flex-direction: column;
+    }
+
+    .feature-item,
+    .team-card,
+    .portfolio-item {
+        width: 100%;
+    }
 }
 
-.features-list,
-.team-list,
-.portfolio-list {
-    flex-direction: column;
-}
-
-.feature-item,
-.team-card,
-.portfolio-item {
-    width: 100%;
-}
-
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
     .container {
         width: 720px;
     }
