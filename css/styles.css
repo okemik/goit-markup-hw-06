@@ -861,55 +861,50 @@ footer {
 }
 
 
-@media screen and (max-width: 320px) {
-    .container {
-        width: 320px;
+/* 320px genişlik için varsayılan stiller */
+.header-nav .nav-ul {
+    display: none;
+    /* Menü başlangıçta gizlenecek */
+}
+
+.header-nav .menu-toggle {
+    display: block;
+    /* Açılır menü düğmesi */
+    background-color: #4d5ae5;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.header-nav .menu-toggle.active+.nav-ul {
+    display: flex;
+    /* Menü açıldığında gösterilecek */
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .header-nav .nav-ul {
+        display: flex;
+        /* Orta boyutlar için menü varsayılan */
+        gap: 20px;
     }
 
-    .features-list,
-    .team-list,
-    .portfolio-list {
-        flex-direction: column;
-    }
-
-    .feature-item,
-    .team-card,
-    .portfolio-item {
-        width: 100%;
+    .header-nav .menu-toggle {
+        display: none;
+        /* Açılır menü orta ve büyük ekranlarda gizlenir */
     }
 }
 
-@media screen and (max-width: 768px) {
+@media (min-width: 1440px) {
     .container {
-        width: 720px;
+        max-width: 1440px;
     }
 
-    .features-list,
-    .team-list,
-    .portfolio-list {
-        flex-direction: row;
-        flex-wrap: wrap;
+    .header-nav .nav-ul {
+        gap: 40px;
+        /* Geniş ekranlarda menüde daha fazla boşluk */
     }
-
-    .feature-item,
-    .team-card,
-    .portfolio-item {
-        width: calc(50% - 24px);
-    }
-}
-
-@media screen and (min-width: 1158px) {
-    .container {
-        width: 1158px;
-       
-    }
-
-    .feature-item,
-    .team-card {
-        width: calc(25% - 24px);
-
-    }
-    .portfolio-item {
-    width: calc(38% - 80px);
-            }
 }
