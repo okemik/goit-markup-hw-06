@@ -95,16 +95,32 @@ a {
 }
 
 .nav-list__list-item .link {
+    position: relative;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: #2e2f42;
-    padding: 24px 0;
-    text-decoration: none;
+    padding-bottom: 24px;
 }
 
-.nav-list__list-item .link:hover,
+.nav-list__list-item .link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: #404bbf;
+    transition: width 0.25s ease-in-out;
+}
+
+.link:hover {color:#404BBF;}
+
+.nav-list__list-item .link:focus:after {
+    width: 100%;
+}
+
 .nav-list__list-item .link:focus {
     color: #404bbf;
 }
@@ -237,7 +253,6 @@ background-color: #2e2f42;
     border-radius: 4px;
     border: 1px solid #8e8f99;
     margin-bottom: 8px;
-   
 }
 
 .section-3 {
@@ -860,51 +875,71 @@ footer {
     background-color: #404bbf;
 }
 
-
-/* 320px genişlik için varsayılan stiller */
-.header-nav .nav-ul {
-    display: none;
-    /* Menü başlangıçta gizlenecek */
+/* Mobile First - 320px */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.header-nav .menu-toggle {
-    display: block;
-    /* Açılır menü düğmesi */
-    background-color: #4d5ae5;
-    color: white;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 10px;
-    margin-right: 10px;
+.container {
+    width: 100%;
+    padding: 0 15px;
+    max-width: 100%;
 }
 
-.header-nav .menu-toggle.active+.nav-ul {
-    display: flex;
-    /* Menü açıldığında gösterilecek */
+/* Features section for small screens */
+.features-list {
     flex-direction: column;
+    gap: 16px;
 }
 
+/* For screens 768px and larger */
 @media (min-width: 768px) {
-    .header-nav .nav-ul {
-        display: flex;
-        /* Orta boyutlar için menü varsayılan */
-        gap: 20px;
+    .container {
+        max-width: 720px;
     }
-
-    .header-nav .menu-toggle {
-        display: none;
-        /* Açılır menü orta ve büyük ekranlarda gizlenir */
+    .features-list {
+        flex-direction: row;
+        gap: 24px;
     }
 }
 
-@media (min-width: 1440px) {
+/* For screens 1158px and larger */
+@media (min-width: 1158px) {
     .container {
-        max-width: 1440px;
+        max-width: 1158px;
     }
+    .features-list {
+        flex-direction: row;
+        gap: 24px;
+    }
+}
 
-    .header-nav .nav-ul {
-        gap: 40px;
-        /* Geniş ekranlarda menüde daha fazla boşluk */
+/* Responsive background image using min-resolution */
+.section-1 {
+    background-image: linear-gradient(rgba(46, 47, 66, 0.7),
+                    rgba(46, 47, 66, 0.7)),
+        url(../images/people-office.jpg);
+}
+
+@media (min-resolution: 2dppx) {
+    .section-1 {
+        background-image: linear-gradient(rgba(46, 47, 66, 0.7),
+            rgba(46, 47, 66, 0.7)),
+        url(../images/people-office@2x.jpg);
     }
+}
+
+.container-header, .section-3, .footer {
+    width: 100%;
+    max-width: 1158px;
+    margin: auto;
+}
+
+.features-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: space-between;
 }
